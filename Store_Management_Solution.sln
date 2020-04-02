@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store_Management", "Store_Management\Store_Management.csproj", "{1DFDE2E4-6FF7-443F-A4E4-83F66B7EF0A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryData", "LibraryData\LibraryData.csproj", "{B24E642C-E56C-4526-91BD-60A5DDF6021A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store_Management_Data", "LibraryData\Store_Management_Data.csproj", "{B24E642C-E56C-4526-91BD-60A5DDF6021A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
