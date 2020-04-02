@@ -58,6 +58,52 @@ CREATE TABLE REVIEW
 	,[R_Content] char(300)
 	,[R_Star] int
 );
+
+--------------------------------------------Create REVIEW Master Procedure-------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Create Procedure ReviewMasterInsertUpdateDelete (@R_ID INTEGER,
+										  @R_UID INTEGER,
+										  @R_TITLE CHAR(50),
+										  @R_CONTENT CHAR(300),
+										  @R_STAR INTEGER,
+										  @StatementType NVarChar(20) = '')
+AS 
+	BEGIN
+		IF @StatementType = 'Insert'
+			Begin 
+				Insert into dbo.REVIEW
+								(R_UID,
+								R_Title,
+								R_Content,
+								R_Star)
+				Values			(@R_UID,
+								@R_Title,
+								@R_Content,
+								@R_Star)
+				End
+		If @StatementType = 'Select'
+			Begin
+				Select *
+				From dbo.REVIEW
+			End
+
+		If @StatementType = 'Update'
+			Begin
+				Update dbo.REVIEW
+				Set R_Title = @R_TITLE,
+					R_Content = @R_CONTENT,
+					R_Star = @R_STAR
+				Where R_ID = @R_ID AND R_UID = @R_UID
+			End
+
+		Else If @StatementType = 'Delete'
+			Begin
+				Delete From dbo.REVIEW
+				Where R_UID = @R_UID
+				And R_ID = @R_ID 
+			End
+	End
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------BEGIN USERS INSERT---------------------------------
 INSERT INTO  USERS ([U_Pass],[U_FName],[U_LName],[U_Address],[U_Country],[U_Zipcode],[U_Phone],[U_Email],[U_Role] )
@@ -108,7 +154,10 @@ Values('Bananas','cat1',NULL, NULL,NULL);
 ---------------------------------------------END INVENTORY INSERT-------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------BEGIN REVIEW INSERT-------------------------------------
-
+Insert Into REVIEW(R_UID, R_Title, R_Content, R_Star)
+Values (1, 'Test', 'Product was great', 5);
+Insert Into REVIEW(R_UID, R_Title, R_Content, R_Star)
+Values (1, 'Test2', 'This is another test done by Robert', 1);
 --------------------------------------------END REVIEW INSERT-------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
