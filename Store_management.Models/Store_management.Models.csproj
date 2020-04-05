@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\LibraryData\Store_Management_Data.csproj" />
-  </ItemGroup>
-
 </Project>

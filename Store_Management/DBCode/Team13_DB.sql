@@ -11,7 +11,7 @@ CREATE TABLE USERS
 	,[U_LName] char(16)
 	,[U_Address] char(32)
 	,[U_Country] char(16)
-	,[U_Zipcode] INT DEFAULT 5
+	,[U_Zipcode] char(6)
 	,[U_Phone] CHAR(15)
 	,[U_Email] char(50) UNIQUE
 	,[U_Role] char(12)  NOT NULL
@@ -59,52 +59,7 @@ CREATE TABLE REVIEW
 	,[R_Star] int
 );
 
---------------------------------------------Create REVIEW Master Procedure-------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Create Procedure ReviewMasterInsertUpdateDelete (@R_ID INTEGER,
-										  @R_UID INTEGER,
-										  @R_TITLE CHAR(50),
-										  @R_CONTENT CHAR(300),
-										  @R_STAR INTEGER,
-										  @StatementType NVarChar(20) = '')
-AS 
-	BEGIN
-		IF @StatementType = 'Insert'
-			Begin 
-				Insert into dbo.REVIEW
-								(R_UID,
-								R_Title,
-								R_Content,
-								R_Star)
-				Values			(@R_UID,
-								@R_Title,
-								@R_Content,
-								@R_Star)
-				End
-		If @StatementType = 'Select'
-			Begin
-				Select *
-				From dbo.REVIEW
-			End
 
-		If @StatementType = 'Update'
-			Begin
-				Update dbo.REVIEW
-				Set R_Title = @R_TITLE,
-					R_Content = @R_CONTENT,
-					R_Star = @R_STAR
-				Where R_ID = @R_ID AND R_UID = @R_UID
-			End
-
-		Else If @StatementType = 'Delete'
-			Begin
-				Delete From dbo.REVIEW
-				Where R_UID = @R_UID
-				And R_ID = @R_ID 
-			End
-	End
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------BEGIN USERS INSERT---------------------------------
 INSERT INTO  USERS ([U_Pass],[U_FName],[U_LName],[U_Address],[U_Country],[U_Zipcode],[U_Phone],[U_Email],[U_Role] )
 VALUES ('123456','admin','Team13','123 Houston','US','77057','8752146897','admin@gmail.com','Master');
