@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Store_Management_Models;
+using Store_Management.Models;
 
 namespace Store_Management.Services
 {
