@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Store_Management_Data;
+using Store_Management_Services;
+
 namespace Store_Management
 {
     public class Startup
@@ -24,7 +27,7 @@ namespace Store_Management
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
+            services.AddSingleton<IStore_Management_Asset, MockProductList>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

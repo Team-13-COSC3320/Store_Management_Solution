@@ -1,0 +1,37 @@
+﻿@page
+@model Store_Management.IndexModel
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h1>Product List</h1>
+
+<style>
+    .btn {
+        width: 75px;
+    }
+</style>
+
+
+
+<div class="card-deck">
+    @foreach (var products in Model.Products)
+    {
+        var pPath = products.photoPath;
+
+        <div class="card m-3" style="min-width : 18rem; max-width:30.5%;">
+            <div class=" card-header">
+                <h3>@products.P_Name - @products.P_Category</h3>
+            </div>
+            <img class="card-img-top imageThumbnail" src="@pPath"
+                 asp-append-version="true" />
+
+            <div class="card-footer text-center">
+                @*<h6>@review.R_Star</h6>*@
+                <a asp-page="Product_Pages/ProductDetails" asp-route-ID="@products.P_ID"
+                   class="btn btn-primary m-1">View</a>
+            </div>
+        </div>
+    }
+</div>
+
