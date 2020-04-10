@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryData.Models
 {
@@ -14,6 +14,9 @@ namespace LibraryData.Models
         public string R_Title { get; set; }
         public string R_Content { get; set; }
         public int R_Star { get; set; }
+
+        [ForeignKey("Product")]
+        public int P_ID {get; set;}
     }
 
 }

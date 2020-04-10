@@ -11,6 +11,8 @@ namespace Store_Management_Data
         IEnumerable<Review> GetAllReviews();
         IEnumerable<User> GetAllUsers();
         IEnumerable<Product> GetAllProducts();
+        Product GetProduct(int id);
+        List<Review> GetReviewsOnProduct(int id); //id = P_ID
 
     }
 }

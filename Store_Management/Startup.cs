@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Store_Management_Data;
 using Store_Management_Services;
+using LibraryData;
 
 namespace Store_Management
 {
@@ -26,6 +27,10 @@ namespace Store_Management
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<StoreManagementContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"));
+            });
             services.AddRazorPages();
             services.AddSingleton<IStore_Management_Asset, MockProductList>();
         }
